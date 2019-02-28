@@ -4,7 +4,7 @@
 void mygrep(FILE*, char*);
 void myreplace(FILE *fp,char *find, char * replace);
 int  main(int argc,char *argv[]){
-	int behaviour;
+	char *behaviour;
 	FILE *fp;
 	char *filename=argv[1];
 	char *find=argv[2];
@@ -14,7 +14,7 @@ int  main(int argc,char *argv[]){
 		exit(1);
 	}
 	behaviour = GREP;
-	else if(argc != 4){
+	if(argc != 4){
 		printf("\t./myreplace filename  <string-to-search> <string-to-replace>");
 		exit(1);
 	}
@@ -34,7 +34,7 @@ void mygrep(FILE *fp,char *find){
 	char c1[500];
 	while(fscanf(fp , "%[^\n]\n" , c1) != EOF){
 		if(strstr(c1 , find) != NULL){
-    	printf("%s\n" , line);
+    	printf("%s\n" , c1);
     }
     else continue;
 	}
@@ -45,7 +45,7 @@ void myreplace(FILE *fp, char *find, char *replace){
 	int flen = strlen(find);
 	while(fscanf(fp , "%[^\n]\n" , c1) != EOF){
 		if(strstr(c1 , find) != NULL){
-			strcpy(c1, replace)
+			strcpy(c1, replace);
 		}
 	}
 }
